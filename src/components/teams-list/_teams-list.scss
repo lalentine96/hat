@@ -1,0 +1,8 @@
+@import '../abstracts/mixins';
+
+.teams-list {
+
+    &__result {
+        font-weight: 600;
+    }
+}

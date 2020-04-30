@@ -1,0 +1,24 @@
+.add-player-form {
+    //padding: 3rem 0 0;
+    position: relative;
+
+    &__input {
+        padding: .6rem 1.5rem;
+        border-radius: 3px;
+        background-color: rgba(256, 256, 256, .8);
+        margin-right: 1rem;
+    }
+
+    & &__message {
+        position: absolute;
+        left: 0;
+        top: -100%;
+        min-width: 25rem;
+        margin-top: -1.5rem;
+
+        &--visible {
+            opacity: .7;
+            visibility: visible;
+        }
+    }
+}

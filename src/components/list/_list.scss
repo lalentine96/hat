@@ -1,0 +1,22 @@
+.list {
+    width: 40rem;
+    margin: 0 auto;
+    margin-top: 5rem;
+    list-style: none;
+    background-color: var(--color-light-grey);
+    border-radius: 5px;
+
+    &__item {
+        text-align: center;
+        font-size: 2rem;
+        padding: 1rem 2rem;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid var(--color-dark-grey);
+        }
+    }
+
+    &__result {
+        font-weight: 600;
+    }
+}
