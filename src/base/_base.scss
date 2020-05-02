@@ -20,3 +20,12 @@ input, textarea {
     resize: none;
     font: inherit;
 }
+
+button {
+    border: none;
+    background-color: transparent;
+
+    &:focus {
+        outline: none;
+    }
+}

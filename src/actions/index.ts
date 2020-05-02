@@ -48,6 +48,13 @@ const addPlayer: ActionCreator<HatAction> = (player: string) => {
     };
 };
 
+const deletePlayer: ActionCreator<HatAction> = (player: string) => {
+    return {
+        type: 'PLAYER_DELETED',
+        player
+    };
+};
+
 export {
     explainWord,
     finishExplain,
@@ -56,5 +63,6 @@ export {
     startGame,
     restartGame, 
     addWords,
-    addPlayer
+    addPlayer,
+    deletePlayer
 };

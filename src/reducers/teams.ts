@@ -1,15 +1,41 @@
 import State from "../models/state";
 import HatAction from "../models/hat-action";
 import { Reducer } from "redux";
+import Team from "../models/team";
 
-import createRandomTeams from "../utils/random-teams";
+const createEmptyTeams = (numOfPlayers: number, teamSize: number) => {
+    let teams: Team[] = new Array(Math.floor(numOfPlayers / teamSize));
+    teams.fill({ names: [], points: 0 });
+
+    for (let i = 0; i < teams.length; i++) {
+        teams[i].names = new Array(teamSize + Number(i < numOfPlayers % teamSize))
+        teams[i].names.fill('');
+    }
+
+    return teams;
+}
+
+const createRandomTeams = (players: string[], teamSize: number) => {
+    let teams = createEmptyTeams(players.length, teamSize);
+    const shuffledPlayers = [...players].sort(() => .5 - Math.random());
+
+    let playersIndex = 0;
+    for (let team of teams) {
+        for (let i = 0; i < team.names.length; i++) {
+            team.names[i] = shuffledPlayers[playersIndex];
+            playersIndex++;
+        }
+    }
+
+    return teams;
+}
 
 const teams: Reducer<State, HatAction> = (state, action) => {
     switch(action.type) {
         case 'TEAMS_GENERATED': {
             return {
                 ...state,
-                teams: createRandomTeams(Array.from(state!.players), 2)
+                teams: createRandomTeams(state!.players, 2)
             } as State;
         }
 

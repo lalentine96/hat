@@ -25,16 +25,25 @@ const AddPlayerForm: React.FC<
     const [ newPlayer, setNewPlayer ] = useState('');
     const [ validationMessage, setValidationMessage ] = useState('');
 
-    const submitPlayer = (e: MouseEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    if (!validationMessage) {
+        if (!newPlayer.trim()) {
+            setValidationMessage('Имя игрока не должно быть пустым');
+        }
         if (players.includes(newPlayer.trim())) {
             setValidationMessage('Такой игрок уже есть');
-        } else if (!newPlayer.trim()) {
-            setValidationMessage('Имя игрока не должно быть пустым');
-        } else {
+        }
+    }
+
+    const submitPlayer = (e: MouseEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        // if (players.includes(newPlayer.trim())) {
+        //     setValidationMessage('Такой игрок уже есть');
+        // // } else if (!newPlayer.trim()) {
+        // //     setValidationMessage('Имя игрока не должно быть пустым');
+        // } else {
             addPlayer(newPlayer);
             setNewPlayer('');
-        }
+        //}
     }
 
     return (
@@ -52,12 +61,14 @@ const AddPlayerForm: React.FC<
                 color="purple"
                 onClick={() => {}}
                 submit
+                disabled={!!validationMessage.length}
+                className="add-player-form__submit"
             >
                 Добавить игрока
             </Button>
             {
-                <div className={"validation-message add-player-form__message" + 
-                    (validationMessage && " add-player-form__message--visible")}>
+                !!validationMessage.length &&
+                <div className="validation-message add-player-form__message">
                     { validationMessage }
                 </div>
             }

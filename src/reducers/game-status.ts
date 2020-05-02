@@ -1,7 +1,7 @@
 import State from "../models/state";
 import HatAction from "../models/hat-action";
 import { Reducer } from "redux";
-import { initialState } from "./reducer";
+import { initialState } from ".";
 
 const gameStatus: Reducer<State, HatAction> = (state, action) => {
     switch(action.type) {

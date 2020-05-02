@@ -13,10 +13,6 @@
 
     transition: transform .2s;
 
-    &:focus {
-        outline: none;
-    }
-
     &:hover {
         &:not(:disabled) {
             transform: translateY(-3px);

@@ -13,6 +13,17 @@ const players: Reducer<State, HatAction> = (state, action) => {
                 ]
             } as State;
 
+        case 'PLAYER_DELETED': {
+            const index = state!.players.indexOf(action.player!);
+            return {
+                ...state,
+                players: [
+                    ...state!.players.slice(0, index),
+                    ...state!.players.slice(index + 1)
+                ]
+            } as State;
+        }
+
         default:
             return state as State;
     }
