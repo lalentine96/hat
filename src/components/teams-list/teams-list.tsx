@@ -1,41 +1,63 @@
 import React from 'react';
 import { connect, MapStateToProps } from 'react-redux';
+import { ActionCreator } from 'redux';
 
+import TeamsListItem from '../teams-list-item/teams-list-item';
 import State from '../../models/state';
 import Team from '../../models/team';
 import List from '../list/list';
+import HatAction from '../../models/hat-action';
+import { deletePlayerFromTeam, deleteTeam, addPlayerToTeam, createTeam } from '../../actions/index';
 
 import './_teams-list.scss';
 
-const TeamsListItem: 
-    React.FC<Team> = ({ names, points }) => {
-    return (
-        <li className="list__item teams-list__item">
-            {names.join(' / ')} - <span className="teams-list__result">
-                {points}
-            </span>
-        </li>
-    );
+interface TeamsListStateProps {
+    teams: Team[];
+    isGameActive: boolean;
 }
 
-export { TeamsListItem };
-
-interface TeamsListProps {
-    teams: Team[]
+interface TeamsListDispatchProps {
+    deletePlayerFromTeam: ActionCreator<HatAction>;
+    deleteTeam: ActionCreator<HatAction>;
+    createTeam: ActionCreator<HatAction>;
+    addPlayerToTeam: ActionCreator<HatAction>;
 }
 
-const TeamsList: React.FC<TeamsListProps> = ({ teams }) => {
+const TeamsList: React.FC<
+    TeamsListStateProps &
+    TeamsListDispatchProps
+> = ({ 
+    teams, 
+    isGameActive,
+    deletePlayerFromTeam, 
+    deleteTeam, 
+    createTeam, 
+    addPlayerToTeam}) => {
 
     return (
         <>
         {
             Boolean(teams.length) &&
             <List className="teams-list">
-                <li className="list__item teams-list__item">
+                <li className="list__item teams-list-item">
                     <h3 className="teams-list__header">Команды</h3>
                 </li>
                 {
-                    teams.map(team => <TeamsListItem key={team.names.join()} {...team}/>)
+                    teams.map((team, i) => <TeamsListItem 
+                                        key={team.names.join() + i.toString()} 
+                                        {...team}
+                                        onDeletePlayer={(player: string) => deletePlayerFromTeam(player, i)}
+                                        onDeleteTeam={() => deleteTeam([...team.names])}
+                                        onAddPlayer={(player: string) => addPlayerToTeam(player, i)}
+                                        index={i}/>)
+                }
+                {
+                    !isGameActive &&
+                    <li 
+                        className="list__item teams-list-item teams-list__new-team"
+                        onClick={createTeam}>
+                        <span className="material-icons">add</span> Создать новую команду
+                    </li>
                 }
             </List>
         }
@@ -43,6 +65,7 @@ const TeamsList: React.FC<TeamsListProps> = ({ teams }) => {
     )
 }
 
-const mapStatetoProps: MapStateToProps<TeamsListProps, {}, State> = ({ teams }) => ({ teams });
+const mapStatetoProps: MapStateToProps<TeamsListStateProps, {}, State> = 
+    ({ teams, isGameActive }) => ({ teams, isGameActive });
 
-export default connect(mapStatetoProps)(TeamsList);
+export default connect(mapStatetoProps, { deletePlayerFromTeam, deleteTeam, addPlayerToTeam, createTeam })(TeamsList);

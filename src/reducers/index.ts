@@ -19,9 +19,9 @@ export const initialState: State = {
 const reducer = reduceReducers<State>(
     initialState,
     gameStatus,
+    teams,
     players,
     words,
-    teams,
     explanationStatus
 );
 

@@ -4,7 +4,7 @@ import { ActionCreator } from 'redux';
 
 import Popup from '../popup/popup';
 import Team from '../../models/team';
-import { TeamsListItem } from '../teams-list/teams-list';
+import TeamsListItem from '../teams-list-item/teams-list-item';
 import State from '../../models/state';
 import Button from '../button/button';
 import HatAction from '../../models/hat-action';
@@ -27,8 +27,8 @@ const FinishPopup: React.FC<
             <h1>Игра окончена!</h1>
             <ol>
                 { 
-                    [...teams].sort((a, b) => b.points - a.points).map(team => {
-                        return <TeamsListItem {...team} key={team.names.join()} />
+                    [...teams].sort((a, b) => b.points - a.points).map((team, i) => {
+                        return <TeamsListItem {...team} key={team.names.join() + i} index={i} />
                     })
                 }
             </ol>

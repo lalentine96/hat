@@ -1,16 +1,15 @@
 import React, { useState, MouseEvent } from 'react';
 import { ActionCreator } from 'redux';
-import { connect, MapStateToProps } from 'react-redux';
+import { connect } from 'react-redux';
 
 import Button from '../button/button';
 import HatAction from '../../models/hat-action';
-import State from '../../models/state';
 import { addPlayer } from '../../actions/index';
 
 import './_add-player-form.scss';
-import '../validation-message/_validation-message.scss';
+import '../validation/_validation.scss';
 
-interface AddPlayerFormStateProps {
+interface AddPlayerOwnProps {
     players: string[];
 }
 
@@ -19,7 +18,7 @@ interface AddPlayerFormDispatchProps {
 }
 
 const AddPlayerForm: React.FC<
-    AddPlayerFormStateProps &
+    AddPlayerOwnProps &
     AddPlayerFormDispatchProps
 > = ({ players, addPlayer }) => {
     const [ newPlayer, setNewPlayer ] = useState('');
@@ -62,20 +61,21 @@ const AddPlayerForm: React.FC<
                 onClick={() => {}}
                 submit
                 disabled={!!validationMessage.length}
-                className="add-player-form__submit"
+                className="add-player-form__submit validation"
             >
                 Добавить игрока
-            </Button>
-            {
+                {
                 !!validationMessage.length &&
-                <div className="validation-message add-player-form__message">
+                <div className="validation__message">
                     { validationMessage }
                 </div>
             }
+            </Button>
+            
         </form>
     );
 }
 
-const mapStateToProps: MapStateToProps<AddPlayerFormStateProps, {}, State> = ({ players }) => ({ players });
+//const mapStateToProps: MapStateToProps<AddPlayerFormStateProps, {}, State> = ({ players }) => ({ players });
 
-export default connect(mapStateToProps, { addPlayer })(AddPlayerForm);
+export default connect(null, { addPlayer })(AddPlayerForm);

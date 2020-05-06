@@ -23,7 +23,7 @@ const PlayersList: React.FC<
     return (    
         <List className="players-list">
             <li className="list__item">
-                <h3>Игроки</h3>
+                <h3>Свободные игроки</h3>
             </li>
             {
                 players.map(player => <li 
@@ -31,7 +31,7 @@ const PlayersList: React.FC<
                     key={player}>
                         {player}
                         <button 
-                            className="players-list__delete"
+                            className="list__delete"
                             onClick={() => deletePlayer(player)}>
                             &times;
                         </button>

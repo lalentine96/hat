@@ -1,35 +1,28 @@
 .page {
     padding: 10rem 12rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .config-page {
-    
-    text-align: center;
 
     &__lists {
+        align-self: stretch;
+
         display: flex;
         align-items: flex-start;
-        justify-content: center;
+        justify-content: space-evenly;
     }
     
 
-    &__teams {
-        margin-left: 10rem;
-    }
+    // &__teams {
+    //     margin-left: 10rem;
+    // }
 
     &__button {
         margin-top: 2rem;
     }
 
-    &__message {
-        max-width: 70rem;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 1rem;
-    }
-
-    &__button:disabled:hover + &__message {
-        visibility: visible;
-        opacity: .7;
-    }
 }

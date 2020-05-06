@@ -2,7 +2,7 @@ import State from "../models/state";
 import HatAction from "../models/hat-action";
 import { Reducer } from "redux";
 
-const words: Reducer<State, HatAction> = (state, action) => {
+const wordsReducer: Reducer<State, HatAction> = (state, action) => {
     switch(action.type) {
         case 'WORDS_ADDED':
             return {
@@ -32,4 +32,4 @@ const words: Reducer<State, HatAction> = (state, action) => {
     }
 }
 
-export default words;
+export default wordsReducer;

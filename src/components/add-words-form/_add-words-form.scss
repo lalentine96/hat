@@ -1,5 +1,6 @@
 .add-words-form {
     margin-top: 2rem;
+    text-align: center;
 
     &__textarea {
         width: 50rem;
@@ -7,7 +8,7 @@
         border-radius: 3px;
         background-color: rgba(256, 256, 256, .8);
         display: block;
-        margin: 2rem auto;
+        margin: 2rem;
     }
 
     &__label {

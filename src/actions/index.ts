@@ -1,68 +1,93 @@
 import { ActionCreator } from "redux";
 import HatAction from "../models/hat-action";
 
-const finishExplain: ActionCreator<HatAction> = () => {
+export const finishExplain: ActionCreator<HatAction> = () => {
     return { type: 'EXPLAIN_FINISHED' };
 };
 
-const startExplain: ActionCreator<HatAction> = () => {
+export const startExplain: ActionCreator<HatAction> = () => {
     return { type: 'EXPLAIN_STARTED' };
 };
 
-const explainWord: ActionCreator<HatAction> = (index: number) => {
+export const explainWord: ActionCreator<HatAction> = (index: number) => {
     return {
         type: 'WORD_EXPLAINED',
         index
     };
 };
 
-const generateTeams: ActionCreator<HatAction> = () => {
+export const generateTeams: ActionCreator<HatAction> = () => {
     return {
         type: 'TEAMS_GENERATED',
     };
 };
 
-const startGame: ActionCreator<HatAction> = () => {
+export const startGame: ActionCreator<HatAction> = () => {
     return {
         type: 'GAME_STARTED',
     };
 };
 
-const restartGame: ActionCreator<HatAction> = () => {
+export const restartGame: ActionCreator<HatAction> = () => {
     return {
         type: 'GAME_RESTARTED',
     };
 };
 
-const addWords: ActionCreator<HatAction> = (words: string) => {
+export const addWords: ActionCreator<HatAction> = (words: string) => {
     return {
         type: 'WORDS_ADDED',
         words
     };
 };
 
-const addPlayer: ActionCreator<HatAction> = (player: string) => {
+export const addPlayer: ActionCreator<HatAction> = (player: string) => {
     return {
         type: 'PLAYER_ADDED',
         player
     };
 };
 
-const deletePlayer: ActionCreator<HatAction> = (player: string) => {
+export const deletePlayer: ActionCreator<HatAction> = (player: string) => {
     return {
         type: 'PLAYER_DELETED',
         player
     };
 };
 
-export {
-    explainWord,
-    finishExplain,
-    startExplain,
-    generateTeams,
-    startGame,
-    restartGame, 
-    addWords,
-    addPlayer,
-    deletePlayer
+export const deletePlayerFromTeam: ActionCreator<HatAction> = (player: string, teamIndex: number) => {
+    return {
+        type: 'PLAYER_DELETED_FROM_TEAM',
+        player,
+        teamIndex
+    };
 };
+
+export const addPlayerToTeam: ActionCreator<HatAction> = (player: string, teamIndex: number) => {
+    return {
+        type: 'PLAYER_ADDED_TO_TEAM',
+        player,
+        teamIndex
+    };
+};
+
+export const deleteTeam: ActionCreator<HatAction> = (names: string[]) => {
+    return {
+        type: 'TEAM_DELETED',
+        names
+    };
+};
+
+export const createTeam: ActionCreator<HatAction> = () => {
+    return {
+        type: 'TEAM_CREATED'
+    };
+};
+
+export const initializeTeams: ActionCreator<HatAction> = (names: string[]) => {
+    return {
+        type: 'TEAMS_INITIALIZED',
+        names
+    };
+};
+

@@ -1,0 +1,94 @@
+.teams-list-item {
+
+    position: relative;
+
+    &__result {
+        font-weight: 600;
+    }
+
+    &__name:not(:last-child)::after {
+        content: " / ";
+        margin-right: .5rem;
+    }
+
+    &__team {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__icons {
+        color: var(--color-purple);
+        height: 3rem;
+        flex: 0 0 6.1rem;
+        margin-left: 1rem;
+    }
+
+    &__icon {
+        line-height: 1;
+        font-size: 3rem;
+    }
+
+    &__icon:hover {
+        cursor: pointer;
+        transform: translateY(-1px);
+    }
+
+    &__names {
+        text-align: left;
+    }
+
+    &__name {
+        display: inline-block;
+    }
+
+    &__input {
+        width: 100%;
+        background-color: transparent;
+        height: 0;
+        display: block;
+    }
+
+    &__form:focus-within &__input {
+        border-bottom: solid var(--color-dark-grey-1) 1px;
+        height: auto;
+    }
+
+    &__players {
+        list-style: none;
+        background-color: #fff;
+        width: 100%;
+        text-align: left;
+        z-index: 100;
+
+        position: absolute;
+        left: 0;
+        top: calc(100% - 3px);
+
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+
+        display: none;
+        overflow: hidden;
+    }
+
+    &__form:focus-within &__players {
+        display: block;
+    }
+
+    &__player {
+        padding: 0 2rem;
+
+        &:not(:last-child) {
+            border-bottom: solid var(--color-swan-white) 1px;
+        }
+
+        &:focus {
+            background-color: var(--color-light-grey);
+            outline: none;
+        }
+    }
+
+    &__placeholder {
+        color: var(--color-dark-grey-2);
+    }
+}

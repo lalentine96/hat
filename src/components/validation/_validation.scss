@@ -1,0 +1,26 @@
+.validation {
+    position: relative;
+
+    &__message {
+        visibility: hidden;
+        opacity: 0;
+        background-color: var(--color-swan-white);
+        border-radius: 5px;
+        transition: all .3s;
+        padding: .7rem 1.2rem;
+
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: calc(100% + .3rem);
+        color: var(--color-dark-grey-2);
+        text-shadow: none;
+        width: max-content;
+        font-size: 1.4rem;
+    }
+
+    &:disabled:hover &__message {
+        opacity: .95;
+        visibility: visible;
+    }
+}

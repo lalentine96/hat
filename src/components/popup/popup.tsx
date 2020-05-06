@@ -6,7 +6,7 @@ import './_popup.scss';
 const Popup: React.FC<PropsWithChildren<{}>> = ({ children }) => {
     return (
         <div className="popup">
-            <div className="card">
+            <div className="card popup__card">
                 { children }
             </div> 
         </div>
