@@ -17,6 +17,8 @@
         text-shadow: none;
         width: max-content;
         font-size: 1.4rem;
+
+        z-index: 10;
     }
 
     &:disabled:hover &__message {

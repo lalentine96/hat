@@ -9,6 +9,7 @@
         background-color: rgba(256, 256, 256, .8);
         display: block;
         margin: 2rem;
+        box-shadow: var(--block-shadow);
     }
 
     &__label {
