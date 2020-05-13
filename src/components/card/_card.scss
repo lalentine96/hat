@@ -4,6 +4,10 @@
     margin-top: 5rem;
     width: 50rem;
 
+    @media only screen and (max-width: 29em) {
+        width: 40rem;
+    }
+
     text-align: center;
     background-color: var(--color-swan-white);
     padding: 2rem 4rem;

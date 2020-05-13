@@ -16,6 +16,11 @@
         color: var(--color-dark-grey-2);
         text-shadow: none;
         width: max-content;
+
+        @media only screen and (max-width: 29em) {
+            max-width: 100%;
+        }
+
         font-size: 1.4rem;
 
         z-index: 10;

@@ -8,6 +8,14 @@
 
 html {
     font-size: 62.5%;
+
+    @media only screen and (max-width: 41.5em) {
+        font-size: 50%;
+    }
+
+    @media only screen and (max-width: 29em) {
+        font-size: 43.75%;
+    }
 }
 
 body {

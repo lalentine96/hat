@@ -72,7 +72,7 @@ const ConfigPage: React.FC<
                 <Button 
                     color="purple" 
                     onClick={generateTeams}
-                    className="config-page__button validation"
+                    className="validation"
                     disabled={allPlayers.length < 2}
                     >
                     Сгенерировать случайные команды
@@ -83,11 +83,11 @@ const ConfigPage: React.FC<
                         </div>
                     }
                 </Button>
-                {' или '}
+                <span className="config-page__buttons-split">или</span>
                 <Button 
                     color="purple" 
                     onClick={() => initializeTeams(allPlayers)}
-                    className="config-page__button validation"
+                    className="validation"
                     disabled={allPlayers.length < 2}
                     >
                     Собрать команды самостоятельно
@@ -105,7 +105,7 @@ const ConfigPage: React.FC<
             <Button
                 color={teams.length ? 'green' : 'red'}
                 onClick={startGame}
-                className="config-page__button validation"
+                className="config-page__start-btn validation"
                 disabled={!!validationMessage.length}
             >
                 Начать игру

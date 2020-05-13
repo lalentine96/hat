@@ -1,9 +1,13 @@
 .page {
-    padding: 10rem 12rem;
+    padding: 8rem 10rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @media only screen and (max-width: 41.5em) {
+        padding: 6rem 8rem 12rem;
+    }
 }
 
 .config-page {
@@ -13,16 +17,36 @@
 
         display: flex;
         align-items: flex-start;
-        justify-content: space-evenly;
+        justify-content: center;
+
+        & > *:not(:last-child) {
+            margin-right: 2rem;
+        }
+
+        @media only screen and (max-width: 64em) {
+            flex-direction: column;
+            align-items: center;
+        }
+
     }
-    
 
-    // &__teams {
-    //     margin-left: 10rem;
-    // }
-
-    &__button {
+    &__team-creators {
+        display: flex;
+        align-items: flex-end;
         margin-top: 2rem;
+
+        @media only screen and (max-width: 64em) {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    &__start-btn {
+        margin-top: 2rem;
+    }
+
+    &__buttons-split {
+        margin: 0 1rem;
     }
 
 }
